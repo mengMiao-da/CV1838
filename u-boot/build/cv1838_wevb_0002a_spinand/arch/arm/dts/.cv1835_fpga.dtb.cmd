@@ -1,0 +1,11 @@
+cmd_arch/arm/dts/cv1835_fpga.dtb := mkdir -p arch/arm/dts/ ; cat /home/cx/work/project/CV183X/CV183X_SDK/t2.2.0.1/t2.2.0.1_sourceV2/t2.2.0.1_source/u-boot/arch/arm/dts/cv1835_fpga.dts  | /home/cx/work/project/CV183X/CV183X_SDK/t2.2.0.1/t2.2.0.1_sourceV2/t2.2.0.1_source/host-tools/gcc/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-gcc -E -Wp,-MD,arch/arm/dts/.cv1835_fpga.dtb.d.pre.tmp -nostdinc -I/home/cx/work/project/CV183X/CV183X_SDK/t2.2.0.1/t2.2.0.1_sourceV2/t2.2.0.1_source/u-boot/arch/arm/dts -I/home/cx/work/project/CV183X/CV183X_SDK/t2.2.0.1/t2.2.0.1_sourceV2/t2.2.0.1_source/u-boot/arch/arm/dts/include -Iinclude -I/home/cx/work/project/CV183X/CV183X_SDK/t2.2.0.1/t2.2.0.1_sourceV2/t2.2.0.1_source/u-boot/include -I/home/cx/work/project/CV183X/CV183X_SDK/t2.2.0.1/t2.2.0.1_sourceV2/t2.2.0.1_source/u-boot/arch/arm/include -include /home/cx/work/project/CV183X/CV183X_SDK/t2.2.0.1/t2.2.0.1_sourceV2/t2.2.0.1_source/u-boot/include/linux/kconfig.h -D__ASSEMBLY__ -undef -D__DTS__ -x assembler-with-cpp -o arch/arm/dts/.cv1835_fpga.dtb.dts.tmp - ; dtc -O dtb -o arch/arm/dts/cv1835_fpga.dtb -b 0 -i /home/cx/work/project/CV183X/CV183X_SDK/t2.2.0.1/t2.2.0.1_sourceV2/t2.2.0.1_source/u-boot/arch/arm/dts/  -Wno-unit_address_vs_reg -Wno-simple_bus_reg -Wno-unit_address_format -Wno-pci_bridge -Wno-pci_device_bus_num -Wno-pci_device_reg  -d arch/arm/dts/.cv1835_fpga.dtb.d.dtc.tmp arch/arm/dts/.cv1835_fpga.dtb.dts.tmp ; cat arch/arm/dts/.cv1835_fpga.dtb.d.pre.tmp arch/arm/dts/.cv1835_fpga.dtb.d.dtc.tmp > arch/arm/dts/.cv1835_fpga.dtb.d
+
+source_arch/arm/dts/cv1835_fpga.dtb := /home/cx/work/project/CV183X/CV183X_SDK/t2.2.0.1/t2.2.0.1_sourceV2/t2.2.0.1_source/u-boot/arch/arm/dts/include/dt-bindings/interrupt-controller/arm-gic.h
+
+deps_arch/arm/dts/cv1835_fpga.dtb := \
+  /home/cx/work/project/CV183X/CV183X_SDK/t2.2.0.1/t2.2.0.1_sourceV2/t2.2.0.1_source/u-boot/arch/arm/dts/include/dt-bindings/interrupt-controller/irq.h \
+  /home/cx/work/project/CV183X/CV183X_SDK/t2.2.0.1/t2.2.0.1_sourceV2/t2.2.0.1_source/u-boot/arch/arm/dts/include/dt-bindings/gpio/gpio.h \
+
+arch/arm/dts/cv1835_fpga.dtb: $(deps_arch/arm/dts/cv1835_fpga.dtb)
+
+$(deps_arch/arm/dts/cv1835_fpga.dtb):

@@ -1,0 +1,7 @@
+cvi_board_init.c:1:5:cvi_board_init	0	static
+board.c:287:5:board_init	48	static
+board.c:440:5:dram_init	0	static
+board.c:449:5:dram_init_banksize	0	static
+board.c:463:6:reset_cpu	0	static
+board.c:467:6:software_root_reset	0	static
+board.c:482:5:board_eth_init	0	static

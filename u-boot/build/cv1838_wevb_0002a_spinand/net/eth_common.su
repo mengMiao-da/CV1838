@@ -1,0 +1,11 @@
+eth_common.c:15:6:eth_parse_enetaddr	64	static
+eth_common.c:27:5:eth_getenv_enetaddr	32	static
+eth_common.c:33:5:eth_setenv_enetaddr	64	static
+eth_common.c:45:5:eth_getenv_enetaddr_by_index	64	static
+eth_common.c:53:5:eth_setenv_enetaddr_by_index	64	static
+eth_common.c:61:6:eth_common_init	16	static
+eth_common.c:73:5:eth_mac_skip	32	static
+eth_common.c:166:13:eth_get_name	16	static
+eth_common.c:83:6:eth_current_changed	32	static
+eth_common.c:110:6:eth_try_another	32	static
+eth_common.c:137:6:eth_set_current	48	static

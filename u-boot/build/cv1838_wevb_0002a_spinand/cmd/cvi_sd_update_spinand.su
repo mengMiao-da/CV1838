@@ -1,0 +1,10 @@
+cvi_sd_update_spinand.c:339:12:spi_nand_blk_allocator	16	static
+cvi_sd_update_spinand.c:194:12:spi_nand_scan_vector	80	static
+cvi_sd_update_spinand.c:704:12:spi_nand_flush_fip_bin	144	static
+cvi_sd_update_spinand.c:289:6:get_spi_nand_info	16	static
+cvi_sd_update_spinand.c:366:5:init_spi_nand_vect	64	static
+cvi_sd_update_spinand.c:831:6:spi_nand_dump_vec	48	static
+cvi_sd_update_spinand.c:782:5:spi_nand_flush_vec	96	static
+cvi_sd_update_spinand.c:629:5:check_and_update_fip_bin	160	static
+cvi_sd_update_spinand.c:860:5:spi_nand_check_write_vector	112	static
+cvi_sd_update_spinand.c:922:5:do_cvi_update_spinand	32	static

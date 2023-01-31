@@ -1,0 +1,15 @@
+dwc_eth_qos.c:1581:5:eqos_free_pkt	32	static
+dwc_eth_qos.c:1458:6:eqos_stop	16	static
+dwc_eth_qos.c:1512:5:eqos_send	48	static
+dwc_eth_qos.c:946:12:eqos_write_hwaddr	32	static
+dwc_eth_qos.c:1160:12:eqos_start	48	static
+dwc_eth_qos.c:1851:12:eqos_remove_resources_tegra186	32	static
+dwc_eth_qos.c:385:12:eqos_mdio_wait_idle.isra.3	48	static
+dwc_eth_qos.c:478:12:eqos_mdio_write	64	static
+dwc_eth_qos.c:434:12:eqos_mdio_read	48	static
+dwc_eth_qos.c:391:12:eqos_mdio_read_direct	48	static
+dwc_eth_qos.c:1621:12:eqos_probe_resources_core	32	static
+dwc_eth_qos.c:2019:12:eqos_remove	32	static
+dwc_eth_qos.c:1955:12:eqos_probe	64	static
+dwc_eth_qos.c:1557:5:eqos_recv	32	static
+dwc_eth_qos.c:525:6:eqos_stop_clks_tegra186	0	static

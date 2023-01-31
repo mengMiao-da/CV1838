@@ -1,0 +1,8 @@
+ubi.c:195:27:ubi_find_volume	48	static
+ubi.c:264:12:ubi_volume_continue_write	48	static
+ubi.c:299:5:ubi_volume_begin_write	48	static
+ubi.c:325:5:ubi_volume_write	0	static
+ubi.c:330:5:ubi_volume_read	96	static
+ubi.c:446:5:ubi_detach	48	static
+ubi.c:476:5:ubi_part	240	static
+ubi.c:517:12:do_ubi	224	static

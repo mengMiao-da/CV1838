@@ -1,0 +1,4 @@
+nand.c:34:5:nand_mtd_to_devnum	0	static
+nand.c:47:5:nand_register	48	static
+nand.c:134:15:nand_size	0	static
+nand.c:139:6:nand_init	32	static

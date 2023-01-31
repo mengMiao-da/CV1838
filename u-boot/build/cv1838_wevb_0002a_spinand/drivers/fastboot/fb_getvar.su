@@ -1,0 +1,11 @@
+fb_getvar.c:94:13:getvar_downloadsize	0	static
+fb_getvar.c:146:13:getvar_has_slot	32	static
+fb_getvar.c:130:13:getvar_slot_suffixes	0	static
+fb_getvar.c:124:13:getvar_current_slot	0	static
+fb_getvar.c:114:13:getvar_product	32	static
+fb_getvar.c:109:13:getvar_version_baseband	0	static
+fb_getvar.c:99:13:getvar_serialno	32	static
+fb_getvar.c:89:13:getvar_bootloader_version	0	static
+fb_getvar.c:137:13:getvar_oem_cmd_result	32	static
+fb_getvar.c:84:13:getvar_version	0	static
+fb_getvar.c:214:6:fastboot_getvar	144	static

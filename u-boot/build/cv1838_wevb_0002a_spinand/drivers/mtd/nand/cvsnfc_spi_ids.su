@@ -1,0 +1,8 @@
+cvsnfc_spi_ids.c:104:12:spi_nand_esmt_ecc_enable	0	static
+cvsnfc_spi_ids.c:109:12:spi_nand_winbond_select_die	16	static
+cvsnfc_spi_ids.c:76:12:spi_general_write_enable	48	static
+cvsnfc_spi_ids.c:23:12:spi_nand_qe_enable	48	static
+cvsnfc_spi_ids.c:46:12:spi_general_wait_ready	64	static
+cvsnfc_spi_ids.c:1259:31:spi_nand_get_flash_info	128	static
+cvsnfc_spi_ids.c:11:12:spi_nand_no_qe_enable	0	static
+cvsnfc_spi_ids.c:1346:6:spi_nand_ids_register	0	static

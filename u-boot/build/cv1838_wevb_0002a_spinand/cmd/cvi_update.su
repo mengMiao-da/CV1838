@@ -1,0 +1,2 @@
+cvi_update.c:48:12:_prgImage.constprop	336	static
+cvi_update.c:336:12:do_cvi_update	896	static

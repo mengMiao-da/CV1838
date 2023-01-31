@@ -1,0 +1,6 @@
+dwapb_gpio.c:72:12:dwapb_gpio_set_value	32	static
+dwapb_gpio.c:65:12:dwapb_gpio_get_value	32	static
+dwapb_gpio.c:50:12:dwapb_gpio_direction_output	32	static
+dwapb_gpio.c:42:12:dwapb_gpio_direction_input	32	static
+dwapb_gpio.c:91:12:gpio_dwapb_probe	32	static
+dwapb_gpio.c:105:12:gpio_dwapb_bind	112	static

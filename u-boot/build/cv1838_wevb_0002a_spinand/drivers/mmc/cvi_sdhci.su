@@ -1,0 +1,4 @@
+cvi_sdhci.c:82:12:cvi_ofdata_to_platdata	48	static
+cvi_sdhci.c:429:12:cvi_sdhci_probe	48	static
+cvi_sdhci.c:117:12:cvi_sdhci_bind	32	static
+cvi_sdhci.c:403:5:cvi_get_cd	0	static

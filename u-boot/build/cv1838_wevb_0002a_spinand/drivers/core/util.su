@@ -1,0 +1,4 @@
+util.c:11:6:dm_warn	272	static
+util.c:20:6:dm_dbg	272	static
+util.c:29:5:list_count_items	0	static
+util.c:40:6:dm_fdt_pre_reloc	32	static

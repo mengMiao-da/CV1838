@@ -1,0 +1,2 @@
+timer_dw.c:8:6:dw_timer_start	0	static
+timer_dw.c:22:6:dw_timer_stop	0	static

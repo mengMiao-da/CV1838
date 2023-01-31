@@ -1,0 +1,1 @@
+/home/cx/work/project/CV183X/CV183X_SDK/t2.2.0.1/t2.2.0.1_sourceV2/t2.2.0.1_source/build/boards/cv1838_wevb_0002a_spinand/u-boot/cvi_board_init.c

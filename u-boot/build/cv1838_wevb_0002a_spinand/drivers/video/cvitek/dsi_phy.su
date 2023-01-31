@@ -1,0 +1,13 @@
+dsi_phy.c:207:13:_esc_data	80	static
+dsi_phy.c:20:6:dphy_set_base_addr	0	static
+dsi_phy.c:33:6:dphy_dsi_lane_en	0	static
+dsi_phy.c:54:5:dphy_dsi_set_lane	48	static
+dsi_phy.c:71:6:dphy_lvds_enable	0	static
+dsi_phy.c:81:6:dphy_init	0	static
+dsi_phy.c:96:5:ilog2	0	static
+dsi_phy.c:113:6:_cal_pll_reg	16	static
+dsi_phy.c:133:6:dphy_lvds_set_pll	48	static
+dsi_phy.c:144:6:dphy_dsi_set_pll	48	static
+dsi_phy.c:217:6:dpyh_mipi_tx_manual_packet	64	static
+dsi_phy.c:229:6:dphy_set_hs_settle	0	static
+dsi_phy.c:234:6:dphy_get_hs_settle	0	static
