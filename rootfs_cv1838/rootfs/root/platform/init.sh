@@ -4,10 +4,10 @@ export PATH=${PATH}:${PLATFORM}
 
 a_rootfs=`cat /proc/cmdline | awk -F ' ' '{print $2}' | awk -F '=' '{print $2}'`
 
-ubiattach /dev/ubi_ctrl -m 8
+ubiattach /dev/ubi_ctrl -m 9
 if [ $? != 0  ]; then
-	ubiformat -y /dev/mtd8
-	ubiattach /dev/ubi_ctrl -m 8
+	ubiformat -y /dev/mtd9
+	ubiattach /dev/ubi_ctrl -m 9
 	ubimkvol /dev/ubi1 -N CFG -m
 fi
 
@@ -22,16 +22,16 @@ if [ $? != 0  ]; then
 fi
 
 if [ ${a_rootfs} != "ROOTFS2" ]; then
-	echo "/dev/mtd3" > /tmp/eapil_app_mtd
+	echo "/dev/mtd4" > /tmp/eapil_app_mtd
 else
-	echo "/dev/mtd6" > /tmp/eapil_app_mtd
+	echo "/dev/mtd7" > /tmp/eapil_app_mtd
 fi
 
 echo ${a_rootfs}
 if [ ${a_rootfs} != "ROOTFS2" ]; then
-	mount -t squashfs /dev/mtdblock3 /root/firmware
+	mount -t squashfs /dev/mtdblock4 /root/firmware
 else
-	mount -t squashfs /dev/mtdblock6 /root/firmware
+	mount -t squashfs /dev/mtdblock7 /root/firmware
 fi
 
 sleep 2
