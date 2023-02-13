@@ -32,7 +32,5 @@ ${CVI_SHOPTS}
 #Mount filesystems needed by mount and mdev
 /bin/busybox mount -t proc proc /proc
 /bin/busybox mount -t sysfs sysfs /sys
-echo "run squashFS /init"
-
 #Go!
 exec /sbin/init $*

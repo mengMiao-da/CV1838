@@ -42,4 +42,4 @@ if [ -f /mnt/sdcard/rom.bin ]; then
 ${PLATFORM}/ota_update 0 /mnt/sdcard/rom.bin
 fi
 
-firmware_init.sh
+appinit.sh

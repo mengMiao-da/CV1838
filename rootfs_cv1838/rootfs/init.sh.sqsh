@@ -37,7 +37,7 @@ mount -t sysfs sysfs /sys
 busybox mdev -s
 
 if [ -e /dev/ubiblock0_0 ]; then
-  echo "Mounting spinand rootfs"
+  #echo "Mounting spinand rootfs"
   /bin/busybox mount -t squashfs -o ro /dev/ubiblock0_0 /mnt
 else
   DEV=$(/usr/sbin/blkid -t PARTLABEL="ROOTFS" | busybox cut -d ':' -f 1)
@@ -60,5 +60,5 @@ mount -t tmpfs none /mnt/dev
 #clean up
 umount /proc
 umount /sys
-echo " Switch root to squashFS"
+#echo " Switch root to squashFS"
 exec switch_root /mnt /init

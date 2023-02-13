@@ -1,5 +1,5 @@
 export LD_LIBRARY_PATH="/lib:/usr/lib:/root/firmware/app/lib:/root/firmware/media/lib"
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/root/firmware/app/bin:/root/firmware/app/scripts"
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/root/firmware/app/bin:/root/firmware/app/scripts:/root/firmware/media/scripts:/root/platform"
 
 if [ "$PS1" ]; then
 	if [ "`id -u`" -eq 0 ]; then
