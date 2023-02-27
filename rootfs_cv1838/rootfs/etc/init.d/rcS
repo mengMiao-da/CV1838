@@ -2,10 +2,10 @@
 echo /sbin/mdev > /proc/sys/kernel/hotplug
 /sbin/mdev -s && echo "mdev is ok......"
 
-export PATH=/usr/bin:/usr/sbin:/bin:/sbin:/root/firmware/app/bin:/root/firmware/app/scripts:/root/firmware/media/scripts:/root/platform
-export LD_LIBRARY_PATH=/lib:/usr/lib:/root/firmware/app/lib:/root/firmware/media/lib
-
-
+export PATH=/usr/bin:/usr/sbin:/bin:/sbin:/root/firmware/app/bin:/root/firmware/app/scripts:/root/firmware/media/bin:/root/firmware/media/scripts:/root/firmware/app/3dr/bin:/root/platform
+export LD_LIBRARY_PATH=/lib:/usr/lib:/root/firmware/app/lib:/root/firmware/media/lib:/root/firmware/app/3dr/lib
+export EAPIL_APP_CONFIGS_DIR=/root/firmware/app/configs
+export EAPIL_MEDIA_CONFIGS_DIR=/root/firmware/media/configs
 # networking
 ifconfig lo 127.0.0.1 up
 /root/platform/init.sh
