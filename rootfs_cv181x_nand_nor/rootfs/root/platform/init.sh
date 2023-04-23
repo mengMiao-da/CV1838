@@ -4,13 +4,14 @@ export PATH=${PATH}:${PLATFORM}
 
 a_rootfs=`cat /proc/cmdline | awk -F ' ' '{print $2}' | awk -F '=' '{print $2}'`
 
-ubiattach /dev/ubi_ctrl -m 8
+ubiattach /dev/ubi_ctrl -m 7
 if [ $? != 0  ]; then
-	ubiformat -y /dev/mtd8
-	ubiattach /dev/ubi_ctrl -m 8
+  echo 'ubiattach failed, Try ubiformat and ubimkvol'
+	ubiformat -y /dev/mtd7
+	ubiattach /dev/ubi_ctrl -m 7
 	ubimkvol /dev/ubi1 -N CFG -m
 fi
-
+sleep 1
 if [ ! -c /dev/ubi1_0 ]; then
 	mdev -s
 fi
@@ -18,6 +19,7 @@ mount -t ubifs -o sync /dev/ubi1_0 /root/configs
 if [ $? != 0  ]; then
 	echo 'Mount /root/configs failed, Try formatting and remounting'
 	ubimkvol /dev/ubi1 -N CFG -m
+	sleep 1
 	mount -t ubifs -o sync /dev/ubi1_0  /root/configs
 fi
 
