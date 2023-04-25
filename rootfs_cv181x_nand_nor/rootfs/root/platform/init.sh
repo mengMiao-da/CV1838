@@ -2,7 +2,7 @@
 PLATFORM=/root/platform
 export PATH=${PATH}:${PLATFORM}
 
-a_rootfs=`cat /proc/cmdline | awk -F ' ' '{print $2}' | awk -F '=' '{print $2}'`
+a_rootfs=`cat /proc/cmdline  | awk -F '=' '{print $2}' | awk '{print $1}'`
 
 ubiattach /dev/ubi_ctrl -m 7
 if [ $? != 0  ]; then
@@ -36,7 +36,7 @@ else
 	mount -t squashfs /dev/mtdblock6 /root/firmware
 fi
 
-sleep 2
+sleep 1
 
 mount /dev/mmcblk0p1 /mnt/sdcard -o errors=continue
 mount -o remount,rw /mnt/sdcard
