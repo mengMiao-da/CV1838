@@ -2056,7 +2056,7 @@ ifeq ($(CROSS_COMPILE),)
 	CROSS_COMPILE = riscv64-unknown-linux-musl-
 endif
 ifeq ($(KSRC),)
-	KSRC := /home/cx/work/project/CV181X/v4.1.0_sourceV2/v4.1.0_source/linux_5.10/build/cv1811c_wevb_0006a_spinor
+	KSRC := /home/cx/work/project/CV181X/v4.1.0_source/linux_5.10/build/cv1811c_wevb_0006a_spinand
 endif
 endif
 ifeq ($(CONFIG_PLATFORM_HISILICON), y)
