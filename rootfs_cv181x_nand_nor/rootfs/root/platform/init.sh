@@ -23,6 +23,12 @@ if [ $? != 0  ]; then
 	mount -t ubifs -o sync /dev/ubi1_0  /root/configs
 fi
 
+
+ubiattach -m 3 -d 3 /dev/ubi_ctrl
+ubiblock -c /dev/ubi3_0
+ubiattach -m 6 -d 6 /dev/ubi_ctrl
+ubiblock -c /dev/ubi6_0
+
 if [ ${a_rootfs} != "ROOTFS2" ]; then
 	echo "/dev/mtd3" > /tmp/eapil_app_mtd
 else
@@ -31,9 +37,18 @@ fi
 
 echo ${a_rootfs}
 if [ ${a_rootfs} != "ROOTFS2" ]; then
-	mount -t squashfs /dev/mtdblock3 /root/firmware
+	if [ -b /dev/ubiblock3_0 ]; then
+		mount -t squashfs /dev/ubiblock3_0 /root/firmware
+	else
+		mount -t squashfs /dev/ubiblock6_0 /root/firmware
+	fi
+   # mount -t squashfs /dev/mtdblock3 /root/firmware
 else
-	mount -t squashfs /dev/mtdblock6 /root/firmware
+	if [ -b /dev/ubiblock6_0 ]; then
+		mount -t squashfs /dev/ubiblock6_0 /root/firmware
+	else
+		mount -t squashfs /dev/ubiblock3_0 /root/firmware
+	fi
 fi
 
 sleep 1
@@ -41,7 +56,7 @@ sleep 1
 mount /dev/mmcblk0p1 /mnt/sdcard -o errors=continue
 mount -o remount,rw /mnt/sdcard
 if [ -f /mnt/sdcard/rom.bin ]; then
-${PLATFORM}/ota_update 0 /mnt/sdcard/rom.bin
+${PLATFORM}/ota_update 1 /mnt/sdcard/rom.bin
 fi
 
 firmware_init.sh
