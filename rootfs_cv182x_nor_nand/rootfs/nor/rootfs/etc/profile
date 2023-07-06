@@ -1,0 +1,52 @@
+export PATH=/usr/bin:/usr/sbin:/bin:/sbin
+export LD_LIBRARY_PATH=/lib:/usr/lib
+
+export FIRMWARE=/root/firmware
+export APP=${FIRMWARE}/app
+export MEDIA=${FIRMWARE}/media
+
+export PATH=${PATH}:${APP}/bin
+export PATH=${PATH}:${APP}/scripts
+export PATH=${PATH}:${APP}/3dr/bin
+export PATH=${PATH}:${MEDIA}/bin
+export PATH=${PATH}:${MEDIA}/scripts
+
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${APP}/lib
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${APP}/3dr/lib
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${MEDIA}/lib
+
+export EMX_APP_CONFIGS_DIR=${APP}/configs
+export EMX_MEDIA_CONFIGS_DIR=${MEDIA}/configs
+export EMX_DATA_DIR=/root/data
+
+if [ "$PS1" ]; then
+        if [ "`id -u`" -eq 0 ]; then
+                export PS1='# '
+        else
+                export PS1='$ '
+        fi
+fi
+
+export PAGER='/bin/more '
+export EDITOR='/bin/vi'
+
+# Source configuration files from /etc/profile.d
+for i in /etc/profile.d/*.sh ; do
+        if [ -r "$i" ]; then
+                . $i
+        fi
+        unset i
+done
+
+export HOSTNAME="$(hostname)"
+export OLDPWD=/root
+
+if [ '$USER' == 'root' ]; then
+    export PS1='[\u@\h]\w\# '
+else
+    export PS1='[\u@\h]\w\$ '
+fi
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'

@@ -1,0 +1,138 @@
+#!/bin/sh
+echo /sbin/mdev > /proc/sys/kernel/hotplug
+/sbin/mdev -s && echo "mdev is ok......"
+
+# networking
+ifconfig lo 127.0.0.1 up
+
+source /etc/profile
+
+# config.B
+ubiattach /dev/ubi_ctrl -m 9
+if [ $? != 0  ]; then
+	ubiformat -y /dev/mtd9
+	ubiattach /dev/ubi_ctrl -m 9
+	ubimkvol /dev/ubi1 -N CFG -m
+fi
+
+if [ ! -c /dev/ubi1_0 ]; then
+	mdev -s
+fi
+mount -t ubifs -o sync /dev/ubi1_0 /root/configs/backup
+if [ $? != 0  ]; then
+	echo 'Mount /root/configs failed, Try formatting and remounting'
+	ubimkvol /dev/ubi1 -N CFG -m
+	mount -t ubifs -o sync /dev/ubi1_0  /root/configs/backup
+fi
+
+# config.A
+ubiattach /dev/ubi_ctrl -m 8
+if [ $? != 0  ]; then
+	ubiformat -y /dev/mtd8
+	ubiattach /dev/ubi_ctrl -m 8
+	ubimkvol /dev/ubi2 -N CFG -m
+fi
+
+if [ ! -c /dev/ubi2_0 ]; then
+	mdev -s
+fi
+mount -t ubifs -o sync /dev/ubi2_0 /root/configs/normal
+if [ $? != 0  ]; then
+	echo 'Mount /root/configs failed, Try formatting and remounting'
+	ubimkvol /dev/ubi2 -N CFG -m
+	mount -t ubifs -o sync /dev/ubi2_0  /root/configs/normal
+fi
+
+# data
+ubiattach /dev/ubi_ctrl -m 11
+if [ $? != 0  ]; then
+	ubiformat -y /dev/mtd11
+	ubiattach /dev/ubi_ctrl -m 11
+	ubimkvol /dev/ubi3 -N DATA -m
+fi
+
+if [ ! -c /dev/ubi3_0 ]; then
+	mdev -s
+fi
+mount -t ubifs -o sync /dev/ubi3_0 /root/data
+if [ $? != 0  ]; then
+	echo 'Mount /root/data failed, Try formatting and remounting'
+	ubimkvol /dev/ubi3 -N DATA -m
+	mount -t ubifs -o sync /dev/ubi3_0  /root/data
+fi
+
+# select system
+cmdline=`cat /proc/cmdline`
+
+RunOnDoubleSystem(){
+    systemSelect=""
+    for item in $cmdline
+    do
+        result=$(echo $item | grep "systemSelect=")
+        if [[ "$result" != "" ]];then
+            if [[ "$result" == "systemSelect=A" ]];then
+                echo "systemSelect A"
+                systemSelect="A"
+            elif [[ "$result" == "systemSelect=B" ]];then
+                echo "systemSelect B"
+                systemSelect="B"
+            fi
+        fi
+    done
+    if [[ "$systemSelect" == "A" ]];then
+        echo "systemSelect A"
+        mount -t squashfs /dev/mtdblock4 /root/firmware
+    elif [[ "$systemSelect" == "B" ]];then
+        echo "systemSelect B"
+        mount -t squashfs /dev/mtdblock7 /root/firmware
+    else
+        echo "cannot found valid systemSelect"
+        exit
+    fi
+    echo "running on system $systemSelect"
+    export SPARE=0
+}
+
+RunOnSpareSystem(){
+    spare=""
+    for item in $cmdline
+    do
+        result=$(echo $item | grep "spare=")
+        if [[ "$result" != "" ]];then
+            if [[ "$result" == "spare=1" ]];then
+                spare="1"
+            elif [[ "$result" == "spare=0" ]];then
+                spare="0"
+            fi
+        fi
+    done
+    if [[ "$spare" == "0" ]];then
+        mount -t squashfs /dev/mtdblock4 /root/firmware
+    elif [[ "$spare" == "1" ]];then
+        mount -t squashfs /dev/mtdblock5 /root/firmware
+    else
+        echo "cannot found valid spare"
+        exit
+    fi
+    echo "running on spare = $spare"
+    export SPARE=$spare
+}
+
+find=0
+for item in $cmdline
+do
+    result=$(echo $item | grep "systemSelect=")
+    if [[ "$result" != "" ]];then
+       find=1
+       break
+    fi
+done
+if [[ "$find" == "1" ]];then
+    RunOnDoubleSystem
+else
+    RunOnSpareSystem
+fi
+
+appinit.sh
+
+
