@@ -3,8 +3,7 @@ echo /sbin/mdev > /proc/sys/kernel/hotplug
 /sbin/mdev -s && echo "mdev is ok......"
 
 export PATH=/usr/bin:/usr/sbin:/bin:/sbin:/root/firmware/bin:/root/firmware/shell:/root/platform
-export LD_LIBRARY_PATH=/lib:/usr/lib:/root/firmware/lib
-
+export LD_LIBRARY_PATH=/lib:/usr/lib:/root/firmware/lib:/root/data/LinkWareConfig/lib:/root/data/Algorithm/lib
 # networking
 ifconfig lo 127.0.0.1 up
 /root/platform/init.sh

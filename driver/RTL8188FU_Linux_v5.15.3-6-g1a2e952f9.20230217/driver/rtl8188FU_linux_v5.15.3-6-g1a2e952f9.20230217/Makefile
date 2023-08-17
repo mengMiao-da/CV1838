@@ -55,7 +55,7 @@ CONFIG_GSPI_HCI = n
 ########################## Features ###########################
 CONFIG_AP_MODE = y
 CONFIG_P2P = y
-CONFIG_MP_INCLUDED = n
+CONFIG_MP_INCLUDED = y
 CONFIG_POWER_SAVING = n
 CONFIG_IPS_MODE = default
 CONFIG_LPS_MODE = default
@@ -2056,7 +2056,7 @@ ifeq ($(CROSS_COMPILE),)
 	CROSS_COMPILE = riscv64-unknown-linux-musl-
 endif
 ifeq ($(KSRC),)
-	KSRC := /home/cx/work/project/CV181X/v4.1.0_source/linux_5.10/build/cv1811c_wevb_0006a_spinand
+	KSRC := /home/cx/work/project/CV181X/v4.1.0.2/v4.1.0.2_source/linux_5.10/build/cv1811c_wevb_0006a_spinand
 endif
 endif
 ifeq ($(CONFIG_PLATFORM_HISILICON), y)
