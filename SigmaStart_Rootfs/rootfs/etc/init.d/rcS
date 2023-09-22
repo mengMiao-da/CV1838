@@ -13,7 +13,29 @@ echo /sbin/mdev > /proc/sys/kernel/hotplug
 mkdir -p /var/lock
 mount -t tmpfs mdev /dev
 mdev -s
-mount -t ubifs ubi0:miservice /config
+
+mkdir -p /dev/pts
+mount -t devpts devpts /dev/pts
+
+source /etc/profile
+
+#config
+ubiattach /dev/ubi_ctrl -m 8
+ubimkvol /dev/ubi0 -N CFG -s 17522688
+if [ ! -c /dev/ubi0_0 ]; then
+	mdev -s
+fi
+
+mount -t ubifs -o sync /dev/ubi0_0 /root/configs
+if [ $? != 0  ]; then
+	echo 'Mount /root/configs failed, Try formatting and remounting'
+	ubimkvol /dev/ubi0 -N CFG -s 17522688
+	mount -t ubifs -o sync /dev/ubi0_0  /root/configs
+fi
+
+mkdir -p /root/configs/data
+mkdir -p /root/configs/normal
+mkdir -p /root/configs/backup
 
 
 # select system

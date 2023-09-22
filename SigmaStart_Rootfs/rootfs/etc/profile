@@ -3,10 +3,12 @@
 
 ulimit -c unlimited
 
+export OLDPWD=/config/modules/5.10
 export TERMINFO=/config/terminfo
-export LD_LIBRARY_PATH="/config/lib:/usr/lib:/root/firmware/app/lib:/root/firmware/media/lib:/root/firmware/app/3dr/lib"
-export PATH="/usr/bin:/usr/sbin:/bin:/sbin:/config:/root/firmware/app/bin:/root/firmware/app/scripts:/root/firmware/media/bin:/root/firmware/media/scripts:/root/firmware/app/3dr/bin:/root/platform"
-
-export EMX_APP_CONFIGS_DIR="/root/firmware/app/configs"
-export EMX_MEDIA_CONFIGS_DIR="/root/firmware/media/configs"
-export EMX_DATA_DIR="/root/configs"
+export LD_LIBRARY_PATH=/config/lib:/usr/lib:/root/firmware/app/lib:/root/firmware/media/lib:/root/firmware/app/3dr/lib
+export PATH=/usr/bin:/usr/sbin:/bin:/sbin:/config:/root/firmware/app/bin:/root/firmware/app/scripts:/root/firmware/media/bin:/root/firmware/media/scripts:/root/firmware/app/3dr/bin:/root/platform
+export EMX_APP_CONFIGS_DIR=/root/firmware/app/configs
+export EMX_MEDIA_CONFIGS_DIR=/root/firmware/media/configs
+export EMX_DATA_DIR=/root/configs
+export APP=/root/firmware/app
+export MEDIA=/root/firmware/media
