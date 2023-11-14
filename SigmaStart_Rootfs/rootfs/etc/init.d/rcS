@@ -20,8 +20,8 @@ mount -t devpts devpts /dev/pts
 source /etc/profile
 
 #config
-ubiattach /dev/ubi_ctrl -m 8
-ubimkvol /dev/ubi0 -N CFG -s 17522688
+ubiattach /dev/ubi_ctrl -m 9
+ubimkvol /dev/ubi0 -N CFG -s 72122368
 if [ ! -c /dev/ubi0_0 ]; then
 	mdev -s
 fi
@@ -29,7 +29,7 @@ fi
 mount -t ubifs -o sync /dev/ubi0_0 /root/configs
 if [ $? != 0  ]; then
 	echo 'Mount /root/configs failed, Try formatting and remounting'
-	ubimkvol /dev/ubi0 -N CFG -s 17522688
+	ubimkvol /dev/ubi0 -N CFG -s 72122368
 	mount -t ubifs -o sync /dev/ubi0_0  /root/configs
 fi
 
@@ -55,9 +55,9 @@ RunOnDoubleSystem(){
         fi
     done
     if [[ "$systemSelect" == "A" ]];then
-        mount -t squashfs /dev/mtdblock4 /root/firmware
+        mount -t squashfs /dev/mtdblock5 /root/firmware
     elif [[ "$systemSelect" == "B" ]];then
-        mount -t squashfs /dev/mtdblock7 /root/firmware
+        mount -t squashfs /dev/mtdblock8 /root/firmware
     else
         echo "cannot found valid systemSelect"
         exit

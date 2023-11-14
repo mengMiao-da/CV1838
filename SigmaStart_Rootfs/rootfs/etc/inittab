@@ -1,3 +1,2 @@
 ::sysinit:/etc/init.d/rcS
-::respawn:-/bin/sh
-#console::respawn:/sbin/getty -L console 115200 vt100
+::respawn:-/bin/login
