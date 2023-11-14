@@ -4,22 +4,13 @@ export PATH=${PATH}:${PLATFORM}
 
 a_rootfs=`cat /proc/cmdline  | awk -F '=' '{print $2}' | awk '{print $1}'`
 
-ubiattach /dev/ubi_ctrl -m 8  #算法打开
+ubiattach /dev/ubi_ctrl -m 10
 if [ $? != 0  ]; then
   echo 'ubiattach failed, Try ubiformat and ubimkvol'
-	ubiformat -y /dev/mtd8
-	ubiattach /dev/ubi_ctrl -m 8
+	ubiformat -y /dev/mtd10
+	ubiattach /dev/ubi_ctrl -m 10
 	ubimkvol /dev/ubi1 -N CFG -m
 fi
-
-ubiattach /dev/ubi_ctrl -m 7
-if [ $? != 0  ]; then
-  echo 'ubiattach failed, Try ubiformat and ubimkvol'
-	ubiformat -y /dev/mtd7
-	ubiattach /dev/ubi_ctrl -m 7
-	ubimkvol /dev/ubi1 -N CFG -m
-fi
-
 sleep 1
 if [ ! -c /dev/ubi1_0 ]; then
 	mdev -s
@@ -32,13 +23,13 @@ if [ $? != 0  ]; then
 	mount -t ubifs -o sync /dev/ubi1_0  /root/configs
 fi
 
-ubiattach -m 7 -d 2 /dev/ubi_ctrl#算法打开
+ubiattach -m 8 -d 2 /dev/ubi_ctrl
 mount -t ubifs -o sync /dev/ubi2_0 /root/data
 
-ubiattach -m 3 -d 3 /dev/ubi_ctrl
-ubiblock -c /dev/ubi3_0
-ubiattach -m 6 -d 6 /dev/ubi_ctrl
-ubiblock -c /dev/ubi6_0
+ubiattach -m 4 -d 4 /dev/ubi_ctrl
+ubiblock -c /dev/ubi4_0
+ubiattach -m 7 -d 7 /dev/ubi_ctrl
+ubiblock -c /dev/ubi7_0
 
 if [ ${a_rootfs} != "ROOTFS2" ]; then
 	echo "/dev/mtd3" > /tmp/eapil_app_mtd
@@ -48,20 +39,20 @@ fi
 
 echo ${a_rootfs}
 if [ ${a_rootfs} != "ROOTFS2" ]; then
-	if [ -b /dev/ubiblock3_0 ]; then
-		mount -t squashfs /dev/ubiblock3_0 /root/firmware
+	if [ -b /dev/ubiblock4_0 ]; then
+		mount -t squashfs /dev/ubiblock4_0 /root/firmware
 	else
-		mount -t squashfs /dev/ubiblock6_0 /root/firmware
+		mount -t squashfs /dev/ubiblock7_0 /root/firmware
 	fi
    # mount -t squashfs /dev/mtdblock3 /root/firmware
 else
-	if [ -b /dev/ubiblock6_0 ]; then
-		mount -t squashfs /dev/ubiblock6_0 /root/firmware
+	if [ -b /dev/ubiblock7_0 ]; then
+		mount -t squashfs /dev/ubiblock7_0 /root/firmware
 	else
-		mount -t squashfs /dev/ubiblock3_0 /root/firmware
+		mount -t squashfs /dev/ubiblock4_0 /root/firmware
 	fi
 fi
-
+sync
 sleep 1
 
 mount /dev/mmcblk0p1 /mnt/sdcard -o errors=continue
