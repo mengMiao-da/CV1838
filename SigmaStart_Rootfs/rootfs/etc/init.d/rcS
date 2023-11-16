@@ -17,7 +17,7 @@ mdev -s
 mkdir -p /dev/pts
 mount -t devpts devpts /dev/pts
 
-source /etc/profile
+
 
 #config
 ubiattach /dev/ubi_ctrl -m 9
@@ -37,6 +37,7 @@ mkdir -p /root/configs/data
 mkdir -p /root/configs/normal
 mkdir -p /root/configs/backup
 
+source /etc/profile
 
 # select system
 cmdline=`cat /proc/cmdline`
