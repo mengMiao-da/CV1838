@@ -1,3 +1,0 @@
-fastboot.c:119:13:fastboot_send	176	static
-fastboot.c:256:13:fastboot_handler	1104	static
-fastboot.c:305:6:fastboot_start_server	16	static

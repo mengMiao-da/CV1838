@@ -1,1 +1,0 @@
-cmd_u-boot.srec := /home/cx/work/project/CV183X/CV183X_SDK/t2.2.0.1/t2.2.0.1_sourceV2/t2.2.0.1_source/host-tools/gcc/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-objcopy --gap-fill=0xff  -j .text -j .secure_text -j .secure_data -j .rodata -j .data -j .u_boot_list -j .rela.dyn -j .got -j .got.plt -j .dtb.init.rodata -O srec u-boot u-boot.srec

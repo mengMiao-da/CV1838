@@ -1,5 +1,0 @@
-fwcall.c:56:20:smc_call	16	static
-fwcall.c:88:31:psci_system_reset	272	static
-fwcall.c:103:31:psci_system_off	272	static
-fwcall.c:119:5:do_poweroff	16	static
-fwcall.c:135:6:reset_misc	16	static

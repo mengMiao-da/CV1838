@@ -1,7 +1,0 @@
-aes.c:500:13:add_round_key	0	static
-aes.c:513:6:aes_expand_key	32	static
-aes.c:546:6:aes_encrypt	96	static
-aes.c:567:6:aes_decrypt	80	static
-aes.c:596:6:aes_apply_cbc_chain_data	0	static
-aes.c:604:6:aes_cbc_encrypt_blocks	96	static
-aes.c:631:6:aes_cbc_decrypt_blocks	128	static

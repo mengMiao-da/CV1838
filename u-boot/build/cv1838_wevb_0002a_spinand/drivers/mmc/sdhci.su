@@ -1,9 +1,0 @@
-sdhci.c:657:12:sdhci_getcd	16	static
-sdhci.c:170:12:sdhci_transfer_data	96	static
-sdhci.c:603:12:sdhci_set_ios	64	static
-sdhci.c:30:6:bm_sdio_pad_setting	0	static
-sdhci.c:102:13:sdhci_reset.isra.4	48	static
-sdhci.c:259:12:sdhci_send_command	96	static
-sdhci.c:698:5:sdhci_probe	48	static
-sdhci.c:721:5:sdhci_setup_cfg	16	static
-sdhci.c:844:5:sdhci_bind	0	static

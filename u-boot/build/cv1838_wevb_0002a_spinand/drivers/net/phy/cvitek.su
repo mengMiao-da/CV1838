@@ -1,3 +1,0 @@
-cvitek.c:148:12:cvi18xx_startup	32	static
-cvitek.c:81:12:cvi18xx_config	32	static
-cvitek.c:171:5:phy_cvitek_init	16	static
