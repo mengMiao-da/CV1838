@@ -41,37 +41,8 @@ fi
 export HISTSIZE=1024
 export HISTFILESIZE=1024
 export HISTTIMEFORMAT='%F %T '
-
 export HISTFILE="${UTMP_NAME}/${USER}/${USER_IP}.log"
 
-export TMOUT=300
-
-#USER_IP=`who 2>/dev/null| awk '{print $NF}' | awk 'END {print}' | sed 's/\[//g' | sed 's/\]//g' | sed 's/:/_/g' `
-USER_IP=`who 2>/dev/null| awk '{print $NF}' | awk 'END {print}'`
-result=$(echo $USER_IP | grep "]")
-if [ "$result" == "" ]
-then
-	USER_IP="console"
-else
-	USER_IP="telnet"
-fi
 
 
-UTMP_NAME="/root/configs/utmp"
-if [ -f /root/configs/syslog_ddr_flag ]; then
-	UTMP_NAME="/tmp/utmp"
-fi
-
-RQ=`date "+%Y%m%d"`
-if [ ! -d ${UTMP_NAME}/${USER} ]
-then
-mkdir -p ${UTMP_NAME}/${USER}
-chmod 777 ${UTMP_NAME}
-chmod 700 ${UTMP_NAME}/${USER}
-fi
-export HISTSIZE=1024
-export HISTFILESIZE=1024
-export HISTTIMEFORMAT='%F %T '
-
-export HISTFILE="${UTMP_NAME}/${USER}/${USER_IP}.log"
 

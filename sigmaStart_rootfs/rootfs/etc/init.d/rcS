@@ -21,7 +21,14 @@ mount -t devpts devpts /dev/pts
 
 #config
 ubiattach /dev/ubi_ctrl -m 9
-ubimkvol /dev/ubi0 -N CFG -s 72122368
+if [ $? != 0  ]; then
+  echo 'ubiattach failed, Try ubiformat and ubimkvol'
+  ubiformat -y /dev/mtd9
+  ubiattach /dev/ubi_ctrl -m 9
+  #ubimkvol /dev/ubi0 -N CFG -s 72122368
+  ubimkvol /dev/ubi0 -N CFG -m
+fi
+sleep 1
 if [ ! -c /dev/ubi0_0 ]; then
 	mdev -s
 fi
@@ -29,7 +36,8 @@ fi
 mount -t ubifs -o sync /dev/ubi0_0 /root/configs
 if [ $? != 0  ]; then
 	echo 'Mount /root/configs failed, Try formatting and remounting'
-	ubimkvol /dev/ubi0 -N CFG -s 72122368
+	ubimkvol /dev/ubi0 -N CFG -m
+	sleep 1
 	mount -t ubifs -o sync /dev/ubi0_0  /root/configs
 fi
 
