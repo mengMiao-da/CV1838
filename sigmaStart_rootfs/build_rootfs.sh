@@ -4,7 +4,7 @@ rm  rootfs.bin
 rm  rootfs/root/platform/build_date.txt
 echo `date` > rootfs/root/platform/build_date.txt
 #mksquashfs rootfs ./rootfs.su -root-owned -comp xz
-mksquashfs rootfs ./rootfs.bin -b 256k -comp xz -all-root
+mksquashfs rootfs ./rootfs.bin -b 128k -comp xz -all-root
 #ubinize -o ./rootfs.bin -p 131072 -m 2048 rootfs_ubinize.cfg
 
 
